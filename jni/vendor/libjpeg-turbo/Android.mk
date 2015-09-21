@@ -3,7 +3,7 @@ include $(CLEAR_VARS)
 
 LOCAL_MODULE := libjpeg-turbo
 
-SOURCE_PATH := libjpeg-turbo-1.4.1
+SOURCE_PATH := $(LOCAL_PATH)/libjpeg-turbo-1.4.1
 
 ifneq ($(filter $(TARGET_ARCH_ABI), armeabi-v7a armeabi-v7a-hard x86),)
 LOCAL_ARM_NEON := true
@@ -164,15 +164,15 @@ LOCAL_C_INCLUDES += \
 	$(LOCAL_PATH)/include \
 
 LOCAL_C_INCLUDES += \
-	$(LOCAL_PATH)/$(SOURCE_PATH)/simd \
-	$(LOCAL_PATH)/$(SOURCE_PATH) \
+	$(SOURCE_PATH)/simd \
+	$(SOURCE_PATH) \
 
 LOCAL_EXPORT_C_INCLUDES := \
-	$(LOCAL_PATH)/$(SOURCE_PATH) \
+	$(SOURCE_PATH) \
 
 LOCAL_CFLAGS += \
 	-DBUILD="20141110" \
-	-DC_ARITH_CODING_SUPPORTED=1 \
+	-DC_ARITH_CODING_SUPPORTED=0 \
 	-DD_ARITH_CODING_SUPPORTED=1 \
 	-DBITS_IN_JSAMPLE=8 \
 	-DHAVE_DLFCN_H=1 \
