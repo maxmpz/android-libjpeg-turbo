@@ -96,6 +96,10 @@ LOCAL_SRC_FILES += \
 LOCAL_CFLAGS += \
 	-DSIZEOF_SIZE_T=8 \
 
+	ifeq ($(NDK_TOOLCHAIN_VERSION),clang3.6)
+		LOCAL_CFLAGS += -fno-integrated-as # Needed to compile aarch64 S in clang mode, but not needed for gcc
+	endif
+
 endif
 
 # libjpeg_la_SOURCES from Makefile.am
