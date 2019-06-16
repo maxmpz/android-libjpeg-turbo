@@ -3,7 +3,7 @@ include $(CLEAR_VARS)
 
 LOCAL_MODULE := libjpeg-turbo
 
-LOCAL_CFLAGS := $(GLOBAL_CFLAGS)
+LOCAL_CFLAGS := $(PA_GLOBAL_CFLAGS) -Wno-unused-function
 
 SOURCE_PATH := $(LOCAL_PATH)/libjpeg-turbo-1.4.1
 
@@ -177,7 +177,7 @@ LOCAL_EXPORT_C_INCLUDES := \
 	$(SOURCE_PATH) \
 	$(LOCAL_PATH)/include \
 
-ifeq ($(GLOBAL_FLTO),true)
+ifeq ($(PA_GLOBAL_FLTO),true)
 	ifeq (,$(findstring -flto, $(LOCAL_CFLAGS)))
 $(error No -flto in LOCAL_CFLAGS=$(LOCAL_CFLAGS)) 	
 	endif
