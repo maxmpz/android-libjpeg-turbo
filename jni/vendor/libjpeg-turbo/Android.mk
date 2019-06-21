@@ -3,7 +3,7 @@ include $(CLEAR_VARS)
 
 LOCAL_MODULE := libjpeg-turbo
 
-LOCAL_CFLAGS := $(PA_GLOBAL_CFLAGS) -Wno-unused-function
+LOCAL_CFLAGS := $(PA_GLOBAL_CFLAGS) -Wno-unused-function 
 
 SOURCE_PATH := $(LOCAL_PATH)/libjpeg-turbo-1.4.1
 
@@ -98,8 +98,9 @@ LOCAL_SRC_FILES += \
 LOCAL_CFLAGS += \
 	-DSIZEOF_SIZE_T=8 \
 
-	ifeq ($(NDK_TOOLCHAIN_VERSION),clang3.6)
+	ifneq (,$(findstring clang,$(NDK_TOOLCHAIN_VERSION))) # clang
 		LOCAL_CFLAGS += -fno-integrated-as # Needed to compile aarch64 S in clang mode, but not needed for gcc
+		LOCAL_CFLAGS += -Wno-shorten-64-to-32
 	endif
 
 endif
