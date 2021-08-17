@@ -99,7 +99,8 @@ LOCAL_CFLAGS += \
 	-DSIZEOF_SIZE_T=8 \
 
 	ifneq (,$(findstring clang,$(NDK_TOOLCHAIN_VERSION))) # clang
-		LOCAL_CFLAGS += -fno-integrated-as # Needed to compile aarch64 S in clang mode, but not needed for gcc
+		# MaxMP: disabled for NDK=23
+		#LOCAL_CFLAGS += -fno-integrated-as # Needed to compile aarch64 S in clang mode, but not needed for gcc
 		LOCAL_CFLAGS += -Wno-shorten-64-to-32
 	endif
 
