@@ -1,3 +1,4 @@
+
 LOCAL_PATH := $(abspath $(call my-dir))
 include $(CLEAR_VARS)
 
@@ -7,7 +8,7 @@ LOCAL_CFLAGS := $(PA_GLOBAL_CFLAGS) -Wno-unused-function
 
 SOURCE_PATH := $(LOCAL_PATH)/libjpeg-turbo-1.4.1
 
-ifneq ($(filter $(TARGET_ARCH_ABI), armeabi-v7a armeabi-v7a-hard x86),)
+ifneq ($(filter $(TARGET_ARCH_ABI), armeabi-v7a armeabi-v7a-hard),)
 LOCAL_ARM_NEON := true
 LOCAL_CFLAGS += -D__ARM_HAVE_NEON
 endif
@@ -100,7 +101,7 @@ LOCAL_CFLAGS += \
 
 	ifneq (,$(findstring clang,$(NDK_TOOLCHAIN_VERSION))) # clang
 		# MaxMP: disabled for NDK=23
-		#LOCAL_CFLAGS += -fno-integrated-as # Needed to compile aarch64 S in clang mode, but not needed for gcc
+		#LOCAL_CFLAGS += -fno-integrated-as # Needed to compile aarch64 S in clang mode, but that is not needed for gcc
 		LOCAL_CFLAGS += -Wno-shorten-64-to-32
 	endif
 
@@ -123,7 +124,6 @@ LOCAL_SRC_FILES += \
 	$(SOURCE_PATH)/jcphuff.c \
 	$(SOURCE_PATH)/jcprepct.c \
 	$(SOURCE_PATH)/jcsample.c \
-	$(SOURCE_PATH)/jctrans.c \
 	$(SOURCE_PATH)/jdapimin.c \
 	$(SOURCE_PATH)/jdapistd.c \
 	$(SOURCE_PATH)/jdatadst.c \
@@ -162,11 +162,11 @@ LOCAL_SRC_FILES += \
 	$(SOURCE_PATH)/jdarith.c \
 
 # libturbojpeg_la_SOURCES from Makefile.am
-LOCAL_SRC_FILES += \
-	$(SOURCE_PATH)/turbojpeg.c \
-	$(SOURCE_PATH)/transupp.c \
-	$(SOURCE_PATH)/jdatadst-tj.c \
-	$(SOURCE_PATH)/jdatasrc-tj.c \
+#LOCAL_SRC_FILES += \
+#	$(SOURCE_PATH)/turbojpeg.c \
+#	$(SOURCE_PATH)/transupp.c \
+#	$(SOURCE_PATH)/jdatadst-tj.c \
+#	$(SOURCE_PATH)/jdatasrc-tj.c \
 
 LOCAL_C_INCLUDES += \
 	$(LOCAL_PATH)/include \

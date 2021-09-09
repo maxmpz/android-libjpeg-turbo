@@ -43,7 +43,10 @@
  * want to refer to it directly.
  */
 
-#define JMESSAGE(code,string)   string ,
+
+//#define JMESSAGE(code,string)   string ,
+// MaxMP: we don't need messages, replace all by "jpeg error"
+#define JMESSAGE(code,string)   "jpeg error" ,
 
 const char * const jpeg_std_message_table[] = {
 #include "jerror.h"
