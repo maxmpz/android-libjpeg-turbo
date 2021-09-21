@@ -12,6 +12,7 @@ ifneq ($(filter $(TARGET_ARCH_ABI), armeabi-v7a armeabi-v7a-hard),)
 LOCAL_ARM_NEON := true
 LOCAL_CFLAGS += -D__ARM_HAVE_NEON
 endif
+LOCAL_CFLAGS += $(PA_GLOBAL_OVERRIDE_CFLAGS)
 
 LOCAL_ASMFLAGS += -DELF
 
